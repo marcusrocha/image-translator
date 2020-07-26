@@ -5,7 +5,7 @@ import axios from 'axios';
 function App() {
 const [location, setLocation] = useState(false);
 const [weather, setWeather] = useState(false);
-const [userGitHub, setUserGitHub] = useState(false);
+const [userGitHub, setuserGitHub] = useState(false);
 
 let getWeather = async (latitude,longitude) => {
   let res = await axios.get("http://api.openweathermap.org/data/2.5/weather",{
@@ -22,8 +22,7 @@ let getWeather = async (latitude,longitude) => {
 
 let getUserGitHub = async ()=> {
   let retorno = await axios.get("https://api.github.com/users/"+process.env.REACT_APP_USER_GITHUB)
-  console.log(retorno.data)
-  setUserGitHub(retorno.data);
+  setuserGitHub(retorno.data)
 }
 
 useEffect(()=>{
@@ -32,6 +31,7 @@ useEffect(()=>{
     setLocation(true);
   })
 },[])
+
 
 if (location===false){
   return(
@@ -63,6 +63,9 @@ if (location===false){
         <button onClick ={ () => getUserGitHub() }>
           Clique aqui para ativar a API do GITHUB
         </button>
+        <h1>Usuário do Twitter: {userGitHub['twitter_username']}</h1>
+        <h2>Usuário do Twitter: {userGitHub['login']}</h2>
+        <h3>Quantidade de repositórios {userGitHub['public_repos']}</h3>
       </div>
     </Fragment>
   );
