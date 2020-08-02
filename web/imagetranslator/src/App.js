@@ -1,8 +1,9 @@
 import React,{ useState, useEffect} from 'react';
 import axios from 'axios';
-import './App.css'
+import './index.css'
 import Menu from './components/Menu'
 import Form from './components/Form'
+
 
 function App() {
 const [userGitHub, setuserGitHub] = useState(false);
@@ -23,8 +24,9 @@ let getUserGitHub = async ()=> {
 
 
   return (
-      <div className="App">
+      <div>
       <Menu />
+       {/*
         <input 
           type="text" required name="nome" value={name}
           onChange={(e) => setName(e.target.value)
@@ -36,6 +38,7 @@ let getUserGitHub = async ()=> {
         <h1>Usuário do Twitter: {userGitHub['twitter_username']}</h1>
         <h2>Usuário do Twitter: {userGitHub['login']}</h2>
         <h3>Quantidade de repositórios {userGitHub['public_repos']}</h3>
+      */}
         <Form />
       </div>
   );
